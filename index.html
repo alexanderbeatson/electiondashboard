@@ -3,7 +3,7 @@
         <script type="text/javascript" src = "https://d3js.org/d3.v5.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </HEAD>
-    <BODY onload = "func()">
+    <BODY onload = "homePage()">
        <style>
            .button {
   background-color: #1831BE;
@@ -35,6 +35,7 @@
            }       
         </style>
         <div id = "overview"></div>
+        <div id = "homeButton"></div>
         <div id = "searchBar"></div>
         <div id = "land"></div>
         <script type = "text/javascript"> 
@@ -49,6 +50,7 @@
             var pageloc = 1;
             var yearSelect = null;
             var wordInput = null;
+            var house = null;
             
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
@@ -63,9 +65,9 @@
             @@@@@@@@@@@         Home button!            @@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
-            function homeButton () {
-                //Display the floating button if viewer is not on the home.
-            }
+            
+            d3.select('#homeButton').append('button').style('width','107px').style('background-position','top').style('padding','0px 30px 0px 30px').style('position','fixed').style('right','0px').style('buttom','0px').style('float','right').attr('id','footerhome').text('Home').on('click',function () {return homePage();});
+            
             
             
            
@@ -80,9 +82,8 @@
             searchingBar.append('button').text('Submit').style('height','30px').attr('type','submit').attr('form','searching').attr('value','Submit');
             document.getElementById("searching").onsearch = function () {searchInput()};
             function searchInput() {
-                pageloc = 5;
                 wordInput = document.getElementById('searching').value;
-                return func();
+                return mpPage();
             }
             ////.append('input').attr('id','searching').attr('type','search').attr('placeholder','Search by : MP names, Constituency names, Township names ...')
             
@@ -95,15 +96,20 @@
             /*-----------------------home---------------------------*/
             function homePage () {
                 d3.select('#land').text('');
-                d3.select('#land').style('margin-left','50px').append('h3').text('General election : ').selectAll('button').data(['2010','2015']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click',function (d) {pageloc = 2; yearSelect = d; return func ();});
+                d3.select('#land').style('margin-left','50px').append('h3').text('General election : ').selectAll('button').data(['2010','2015']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click',function (d) {pageloc = 2; yearSelect = d; return yearPage();});
                 d3.select('#land').append('br');
-                d3.select('#land').append('h3').text('By-election : ').selectAll('button').data(['2012','2017','2018']).enter().append('button').classed('button', true).text(function (d) {return d;}).on('click',function (d) {pageloc = 2; yearSelect = d; return func();}); 
+                d3.select('#land').append('h3').text('By-election : ').selectAll('button').data(['2012','2017','2018']).enter().append('button').classed('button', true).text(function (d) {return d;}).on('click',function (d) {pageloc = 2; yearSelect = d; return yearPage();}); 
             }
             
             
             /*-----------------------Year---------------------------*/
             function yearPage () {
-                d3.select('#land').text("testing"+ yearSelect + "");
+                d3.select('#land').text("");
+                
+                
+                
+                
+                d3.select('#land').append('h3').text('House by :').selectAll('button').data(['Amyotha Hluttaw','Pyithu Hluttaw','State and Region Hluttaw']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click', function(d) {house = d; return housePage();});
             }
             
             /*----------------------House---------------------------*/
@@ -122,25 +128,6 @@
             }
             
             
-            
-            /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
-            @@@@@@@@@@@         Main Function!          @@@@@@@@@@@@@@
-            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
-            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
-            
-            function func () { if (pageloc == 1) {
-                return homePage();
-            } else if (pageloc == 2) {
-                return yearPage();
-            } else if (pageloc == 3) {
-                return housePage();
-            } else if (pageloc == 4) {
-                return constPage();
-            } else if (pageloc == 5) {
-                return mpPage();
-            }
-            }
         </script>
     </BODY>
 </HTML>
