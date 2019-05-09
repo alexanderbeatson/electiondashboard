@@ -5,6 +5,13 @@
     </HEAD>
     <BODY onload = "homePage()">
        <style>
+           table{ 
+    width: 100%;;
+}
+th, td{
+    width: 50%;
+    border: blue solid 1px;    
+}
            .button {
   background-color: #1831BE;
   border: 2px solid #4CAF50;
@@ -39,7 +46,31 @@
         <div id = "searchBar"></div>
         <div id = "land"></div>
         <script type = "text/javascript"> 
-            
+            /*var electionInfo = d3.csv("year,state_counsel, president, seats
+2010,NA,Thein Sein, 330
+2012,NA,Thein Sein, 120
+2015,Aung San Su Kyi, Test, 330
+2018,Aung San Su Kyi, Test, 120");
+            var electionData = d3.csv(`pcode_st,pcode_dt,pcode_ts,name_st,name_dt,name_ts,const_code,const_name,candidate_name:en,candidate_name:my,party_name:en,party_name:my,votes:total_valid,votes:advance,votes:regular
+MMR004,MMR004D002,MMR004008,Chin,Mindat,Kanpetlet,CC181058,ကန်ပက်လက် မဲဆန္ဒနယ်,U Nyunt Win,ဦးညွန့်ဝင်း,National League for Democracy,အမျိုးသားဒီမိုကရေစီအဖွဲ့ချုပ်,3083,N/A,N/A
+MMR004,MMR004D002,MMR004008,Chin,Mindat,Kanpetlet,CC181058,ကန်ပက်လက် မဲဆန္ဒနယ်,U Ma Nar Nine,ဦးမနားနိုင်း,Union Solidarity and Development Party,ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီ,2527,N/A,N/A
+MMR004,MMR004D002,MMR004008,Chin,Mindat,Kanpetlet,CC181058,ကန်ပက်လက် မဲဆန္ဒနယ်,U Kee Htan Loon,ဦးကီးထန်းလွန်း,Chin National Demcratic Party,ချင်းအမျိုးသားဒီမိုကရက်တစ်ပါတီ,2445,N/A,N/A
+MMR004,MMR004D002,MMR004008,Chin,Mindat,Kanpetlet,CC181058,ကန်ပက်လက် မဲဆန္ဒနယ်,U Ma Nar Shin,ဦးမနားရှင်း,Chin Progressive Party,ချင်းတိုးတက်ရေးပါတီ,242,N/A,N/A
+MMR010,MMR010D004,MMR010017,Mandalay,Myingyan,Myingyan,CC181133,မြင်းခြံ မဲဆန္ဒနယ်,U Sein Myint,ဦးစိန်မြင့်,National League for Democracy,အမျိုးသားဒီမိုကရေစီအဖွဲ့ချုပ်,67659,N/A,N/A
+MMR010,MMR010D004,MMR010017,Mandalay,Myingyan,Myingyan,CC181133,မြင်းခြံ မဲဆန္ဒနယ်,Dr. Than Win,ဒေါက်တာသန်းဝင်း,Union Solidarity and Development Party,ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီ,17025,N/A,N/A
+MMR010,MMR010D004,MMR010017,Mandalay,Myingyan,Myingyan,CC181133,မြင်းခြံ မဲဆန္ဒနယ်,U Phyo Han,ဦးဖြိုးဟန်,Democratic Party for a New Society,လူ့ဘောင်သစ် ဒီမိုကရက်တစ်ပါတီ,3425,N/A,N/A
+MMR010,MMR010D004,MMR010017,Mandalay,Myingyan,Myingyan,CC181133,မြင်းခြံ မဲဆန္ဒနယ်,U Ye Kyaw Aung,ဦးရဲကျော်အောင်,Public of Labour Party,ပြည်သူ့အလုပ်သမားပါတီ,1129,N/A,N/A
+MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Toe Win,ဦးတိုးဝင်း,National League for Democracy,အမျိုးသားဒီမိုကရေစီအဖွဲ့ချုပ်,27809,N/A,N/A
+MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Myo Win Kyaw,ဦးမျိုးဝင်းကျော်,Union Solidarity and Development Party,ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီ,3714,N/A,N/A
+MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,Daw Thet Thet Aye,ဒေါ်သက်သက်အေး,Arakan League for Democracy,ရခိုင်ဒီမိုကရေစီအဖွဲ့ချုပ်ပါတီ,315,N/A,N/A
+MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Zin Aung,ဦးဇင်အောင်,Myanmar New Society Democratic Party,မြန်မာ့လူ့ဘောင်သစ်ဒီမိုကရက်တစ်ပါတီ,192,N/A,N/A
+MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Se Se Naw Gyar,ဦးစီစီနော်ဂျာ,Union Ethnic People's Federal Democracy Party,ပြည်ထောင်စုတိုင်းရင်းသားများဖက်ဒရယ်ဒီမိုကရေစီပါတီ,187,N/A,N/A
+MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Tun Tun Win,ဦးထွန်းထွန်းဝင်း,Public of Labour Party,ပြည်သူ့အလုပ်သမားပါတီ,172,N/A,N/A
+MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Myint Kyi,ဦးမြင့်ကြည်,Democratic Party (Myanmar),ဒီမိုကရက်တစ်ပါတီ(မြန်မာ),128,N/A,N/A
+MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Myint San Tun,ဦးမြင့်ဆန်းထွန်း,Myanmar People's Democratic Party,မြန်မာ့ပြည်သူ့ဒီမိုကရက်တစ်ပါတီ,49,N/A,N/A
+MMR014,MMR014D002,MMR014012,Shan (South),Loilen,Laihka,CC181259,လဲချား မဲဆန္ဒနယ်,Sai Oakar,စိုင်းဥက္ကာ,Shan Nationalities League for Democracy,ရှမ်းတိုင်းရင်းသားများဒီမိုကရေစီအဖွဲ့ချုပ်,8550,N/A,N/A
+MMR014,MMR014D002,MMR014012,Shan (South),Loilen,Laihka,CC181259,လဲချား မဲဆန္ဒနယ်,Sai Shwe Sine,စိုင်းရွှေဆိုင်း,Shan Nationalities Democratic Party,ရှမ်းတိုင်းရင်းသားများဒီမိုကရက်တစ်ပါတီ,1613,N/A,N/A
+MMR014,MMR014D002,MMR014012,Shan (South),Loilen,Laihka,CC181259,လဲချား မဲဆန္ဒနယ်,Sai Aung Tun Lay,စိုင်းအောင်ထွန်းလေး,National League for Democracy,အမျိုးသားဒီမိုကရေစီအဖွဲ့ချုပ်,1013,N/A,N/A`);*/
             
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
@@ -50,7 +81,8 @@
             var pageloc = 1;
             var yearSelect = null;
             var wordInput = null;
-            var house = null;
+            var houseSelect = null;
+            var MPselect = null;
             
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
@@ -66,7 +98,7 @@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
             
-            d3.select('#homeButton').append('button').style('width','107px').style('background-position','top').style('padding','0px 30px 0px 30px').style('position','fixed').style('right','0px').style('buttom','0px').style('float','right').attr('id','footerhome').text('Home').on('click',function () {return homePage();});
+            d3.select('#homeButton').append('button').style('width','107px').style('background-position','top').style('padding','0px 30px 0px 30px').style('position','fixed').style('right','2%').style('top','90%').style('float','right').attr('id','footerhome').text('Home').on('click',function () {return homePage();});
             
             
             
@@ -79,13 +111,13 @@
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
             var searchingBar = d3.select('#searchBar').append('center');
             searchingBar.append('input').classed('searchBar',true).attr('id','searching').attr('type','search').attr('placeholder','Search by : MP names, Constituency names, Township names ...');
-            searchingBar.append('button').text('Submit').style('height','30px').attr('type','submit').attr('form','searching').attr('value','Submit');
+            searchingBar.append('button').text('Submit').style('height','30px').attr('type','submit').attr('form','searching').attr('value','Submit').on('click', function () {return searchInput()});
             document.getElementById("searching").onsearch = function () {searchInput()};
             function searchInput() {
                 wordInput = document.getElementById('searching').value;
                 return mpPage();
             }
-            ////.append('input').attr('id','searching').attr('type','search').attr('placeholder','Search by : MP names, Constituency names, Township names ...')
+            ////.append('input').attr('id','searching').attr('type','search').attr('placeholder','Search by : MP names, Constituency names, Township names ...').on('click',document.getElementById("searching") = function () {searchInput()})
             
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
@@ -96,30 +128,33 @@
             /*-----------------------home---------------------------*/
             function homePage () {
                 d3.select('#land').text('');
-                d3.select('#land').style('margin-left','50px').append('h3').text('General election : ').selectAll('button').data(['2010','2015']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click',function (d) {pageloc = 2; yearSelect = d; return yearPage();});
-                d3.select('#land').append('br');
-                d3.select('#land').append('h3').text('By-election : ').selectAll('button').data(['2012','2017','2018']).enter().append('button').classed('button', true).text(function (d) {return d;}).on('click',function (d) {pageloc = 2; yearSelect = d; return yearPage();}); 
+                var land = d3.select('#land').style('margin-left','50px');
+                land.append('h3').text('General election : ').selectAll('button').data(['2010','2015']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click',function (d) {pageloc = 2; yearSelect = d; return yearPage();});
+                land.append('h3').text('By-election : ').selectAll('button').data(['2012','2017','2018']).enter().append('button').classed('button', true).text(function (d) {return d;}).on('click',function (d) {yearSelect = d; return constPage();}); 
             }
             
             
             /*-----------------------Year---------------------------*/
             function yearPage () {
                 d3.select('#land').text("");
+                d3.select('#land').append("center").append("h2").text("Year : " + yearSelect);
                 
                 
                 
                 
-                d3.select('#land').append('h3').text('House by :').selectAll('button').data(['Amyotha Hluttaw','Pyithu Hluttaw','State and Region Hluttaw']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click', function(d) {house = d; return housePage();});
+                d3.select('#land').append('h3').text('House by :').selectAll('button').data(['Amyotha Hluttaw','Pyithu Hluttaw','State and Region Hluttaw']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click', function(d) {houseSelect = d; return housePage();});
             }
             
             /*----------------------House---------------------------*/
             function housePage () {
-                
+                d3.select('#land').text("");
+                d3.select('#land').append("center").append("h2").text("Year : " + yearSelect);
+                d3.select('#land').append("center").append("h2").text("House : " + houseSelect);
             }
             
             /*-------------------Constituency-----------------------*/
             function constPage () {
-                
+                constInfo = d3.select();
             }
             
             /*-----------------------MP-----------------------------*/
