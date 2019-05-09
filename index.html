@@ -1,6 +1,7 @@
 <HTML>
     <HEAD>
         <script type="text/javascript" src = "https://d3js.org/d3.v5.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </HEAD>
     <BODY onload = "func()">
        <style>
@@ -28,34 +29,106 @@
                height: 30px;
                background-color: aliceblue;
                border-radius: 5px;
-           }
-           
+               min-width: 300px;
+               max-width: 800px;
+               margin: auto;
+           }       
         </style>
         <div id = "overview"></div>
         <div id = "searchBar"></div>
         <div id = "land"></div>
-        <script type = "text/javascript">
-            var searchBar = d3.select('#searchBar').append('center').append('input').classed('searchBar',true).attr('type','text').attr('placeholder','Search by : MP names, Constituency names, Township names ...');
+        <script type = "text/javascript"> 
+            
+            
+            /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@            Variables!           @@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+            
+            var pageloc = 1;
+            var yearSelect = null;
+            var wordInput = null;
+            
+            /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@         First Paragraph!        @@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+            d3.select('#overview').append('p').text('This dashboard is blah blah blah.....');
+            
+            
+            /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@         Home button!            @@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+            function homeButton () {
+                //Display the floating button if viewer is not on the home.
+            }
+            
+            
+           
+            
+            /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@         The Search Bar!         @@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+            var searchingBar = d3.select('#searchBar').append('center');
+            searchingBar.append('input').classed('searchBar',true).attr('id','searching').attr('type','search').attr('placeholder','Search by : MP names, Constituency names, Township names ...');
+            searchingBar.append('button').text('Submit').style('height','30px').attr('type','submit').attr('form','searching').attr('value','Submit');
+            document.getElementById("searching").onsearch = function () {searchInput()};
+            function searchInput() {
+                pageloc = 5;
+                wordInput = document.getElementById('searching').value;
+                return func();
+            }
+            ////.append('input').attr('id','searching').attr('type','search').attr('placeholder','Search by : MP names, Constituency names, Township names ...')
+            
+            /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@             Pages!              @@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+            
+            /*-----------------------home---------------------------*/
             function homePage () {
                 d3.select('#land').text('');
                 d3.select('#land').style('margin-left','50px').append('h3').text('General election : ').selectAll('button').data(['2010','2015']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click',function (d) {pageloc = 2; yearSelect = d; return func ();});
                 d3.select('#land').append('br');
                 d3.select('#land').append('h3').text('By-election : ').selectAll('button').data(['2012','2017','2018']).enter().append('button').classed('button', true).text(function (d) {return d;}).on('click',function (d) {pageloc = 2; yearSelect = d; return func();}); 
             }
+            
+            
+            /*-----------------------Year---------------------------*/
             function yearPage () {
                 d3.select('#land').text("testing"+ yearSelect + "");
             }
+            
+            /*----------------------House---------------------------*/
             function housePage () {
                 
             }
+            
+            /*-------------------Constituency-----------------------*/
             function constPage () {
                 
             }
+            
+            /*-----------------------MP-----------------------------*/
             function mpPage () {
-                
+                d3.select('#land').text("Input Word is" + wordInput);                
             }
-            var pageloc = 1;
-            var yearSelect = null;
+            
+            
+            
+            /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@         Main Function!          @@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+            
             function func () { if (pageloc == 1) {
                 return homePage();
             } else if (pageloc == 2) {
