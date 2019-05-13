@@ -1,16 +1,15 @@
 <HTML>
     <HEAD>
-        <script type="text/javascript" src = "https://d3js.org/d3.v5.min.js"></script>
+        <script type="text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+        <script type="text/javascript" src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </HEAD>
     <BODY onload = "homePage()">
        <style>
-           table{ 
-    width: 100%;;
-}
-th, td{
-    width: 50%;
-    border: blue solid 1px;    
+           table, th, td{ 
+    width: 90%;
+               margin: 2%;
+               border: 1px solid black;
 }
            .button {
   background-color: #1831BE;
@@ -46,33 +45,9 @@ th, td{
         <div id = "searchBar"></div>
         <div id = "land"></div>
         <script type = "text/javascript"> 
-            /*var electionInfo = d3.csv("year,state_counsel, president, seats
-2010,NA,Thein Sein, 330
-2012,NA,Thein Sein, 120
-2015,Aung San Su Kyi, Test, 330
-2018,Aung San Su Kyi, Test, 120");
-            var electionData = d3.csv(`pcode_st,pcode_dt,pcode_ts,name_st,name_dt,name_ts,const_code,const_name,candidate_name:en,candidate_name:my,party_name:en,party_name:my,votes:total_valid,votes:advance,votes:regular
-MMR004,MMR004D002,MMR004008,Chin,Mindat,Kanpetlet,CC181058,ကန်ပက်လက် မဲဆန္ဒနယ်,U Nyunt Win,ဦးညွန့်ဝင်း,National League for Democracy,အမျိုးသားဒီမိုကရေစီအဖွဲ့ချုပ်,3083,N/A,N/A
-MMR004,MMR004D002,MMR004008,Chin,Mindat,Kanpetlet,CC181058,ကန်ပက်လက် မဲဆန္ဒနယ်,U Ma Nar Nine,ဦးမနားနိုင်း,Union Solidarity and Development Party,ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီ,2527,N/A,N/A
-MMR004,MMR004D002,MMR004008,Chin,Mindat,Kanpetlet,CC181058,ကန်ပက်လက် မဲဆန္ဒနယ်,U Kee Htan Loon,ဦးကီးထန်းလွန်း,Chin National Demcratic Party,ချင်းအမျိုးသားဒီမိုကရက်တစ်ပါတီ,2445,N/A,N/A
-MMR004,MMR004D002,MMR004008,Chin,Mindat,Kanpetlet,CC181058,ကန်ပက်လက် မဲဆန္ဒနယ်,U Ma Nar Shin,ဦးမနားရှင်း,Chin Progressive Party,ချင်းတိုးတက်ရေးပါတီ,242,N/A,N/A
-MMR010,MMR010D004,MMR010017,Mandalay,Myingyan,Myingyan,CC181133,မြင်းခြံ မဲဆန္ဒနယ်,U Sein Myint,ဦးစိန်မြင့်,National League for Democracy,အမျိုးသားဒီမိုကရေစီအဖွဲ့ချုပ်,67659,N/A,N/A
-MMR010,MMR010D004,MMR010017,Mandalay,Myingyan,Myingyan,CC181133,မြင်းခြံ မဲဆန္ဒနယ်,Dr. Than Win,ဒေါက်တာသန်းဝင်း,Union Solidarity and Development Party,ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီ,17025,N/A,N/A
-MMR010,MMR010D004,MMR010017,Mandalay,Myingyan,Myingyan,CC181133,မြင်းခြံ မဲဆန္ဒနယ်,U Phyo Han,ဦးဖြိုးဟန်,Democratic Party for a New Society,လူ့ဘောင်သစ် ဒီမိုကရက်တစ်ပါတီ,3425,N/A,N/A
-MMR010,MMR010D004,MMR010017,Mandalay,Myingyan,Myingyan,CC181133,မြင်းခြံ မဲဆန္ဒနယ်,U Ye Kyaw Aung,ဦးရဲကျော်အောင်,Public of Labour Party,ပြည်သူ့အလုပ်သမားပါတီ,1129,N/A,N/A
-MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Toe Win,ဦးတိုးဝင်း,National League for Democracy,အမျိုးသားဒီမိုကရေစီအဖွဲ့ချုပ်,27809,N/A,N/A
-MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Myo Win Kyaw,ဦးမျိုးဝင်းကျော်,Union Solidarity and Development Party,ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီ,3714,N/A,N/A
-MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,Daw Thet Thet Aye,ဒေါ်သက်သက်အေး,Arakan League for Democracy,ရခိုင်ဒီမိုကရေစီအဖွဲ့ချုပ်ပါတီ,315,N/A,N/A
-MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Zin Aung,ဦးဇင်အောင်,Myanmar New Society Democratic Party,မြန်မာ့လူ့ဘောင်သစ်ဒီမိုကရက်တစ်ပါတီ,192,N/A,N/A
-MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Se Se Naw Gyar,ဦးစီစီနော်ဂျာ,Union Ethnic People's Federal Democracy Party,ပြည်ထောင်စုတိုင်းရင်းသားများဖက်ဒရယ်ဒီမိုကရေစီပါတီ,187,N/A,N/A
-MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Tun Tun Win,ဦးထွန်းထွန်းဝင်း,Public of Labour Party,ပြည်သူ့အလုပ်သမားပါတီ,172,N/A,N/A
-MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Myint Kyi,ဦးမြင့်ကြည်,Democratic Party (Myanmar),ဒီမိုကရက်တစ်ပါတီ(မြန်မာ),128,N/A,N/A
-MMR013,MMR013D002,MMR013015,Yangon,Yangon (East),Tamwe,CC181323,တာမွေ မဲဆန္ဒနယ်,U Myint San Tun,ဦးမြင့်ဆန်းထွန်း,Myanmar People's Democratic Party,မြန်မာ့ပြည်သူ့ဒီမိုကရက်တစ်ပါတီ,49,N/A,N/A
-MMR014,MMR014D002,MMR014012,Shan (South),Loilen,Laihka,CC181259,လဲချား မဲဆန္ဒနယ်,Sai Oakar,စိုင်းဥက္ကာ,Shan Nationalities League for Democracy,ရှမ်းတိုင်းရင်းသားများဒီမိုကရေစီအဖွဲ့ချုပ်,8550,N/A,N/A
-MMR014,MMR014D002,MMR014012,Shan (South),Loilen,Laihka,CC181259,လဲချား မဲဆန္ဒနယ်,Sai Shwe Sine,စိုင်းရွှေဆိုင်း,Shan Nationalities Democratic Party,ရှမ်းတိုင်းရင်းသားများဒီမိုကရက်တစ်ပါတီ,1613,N/A,N/A
-MMR014,MMR014D002,MMR014012,Shan (South),Loilen,Laihka,CC181259,လဲချား မဲဆန္ဒနယ်,Sai Aung Tun Lay,စိုင်းအောင်ထွန်းလေး,National League for Democracy,အမျိုးသားဒီမိုကရေစီအဖွဲ့ချုပ်,1013,N/A,N/A`);*/
             
-            /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            
+            /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     Set all the variables before they are used.
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@            Variables!           @@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
@@ -83,17 +58,18 @@ MMR014,MMR014D002,MMR014012,Shan (South),Loilen,Laihka,CC181259,လဲချာ�
             var wordInput = null;
             var houseSelect = null;
             var MPselect = null;
+            var tmpDataset = [],i,j;
             
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@      Introduction!
             @@@@@@@@@@@         First Paragraph!        @@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
-            d3.select('#overview').append('p').text('This dashboard is blah blah blah.....');
+            d3.select('#overview').append('h4').style('margin','5%').text('Tech4Change team from Phandeeyar develops the dashboard about Election Data to use and access it easily and effectively. The dashboard allows you to search information of all the elections. Most of the election data are extracted from Union Election Commission (UEC). The data of General Elections (2010, 2015) and By-Elections (2012, 2017, 2018) can be downloaded. Datasets are digitized, cleaned and manipulated by Tech4Change Team.');
             
             
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@      Call homePage
             @@@@@@@@@@@         Home button!            @@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
@@ -105,7 +81,7 @@ MMR014,MMR014D002,MMR014012,Shan (South),Loilen,Laihka,CC181259,လဲချာ�
            
             
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@      Call mpPage function and assign the input to wordInput variable
             @@@@@@@@@@@         The Search Bar!         @@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
@@ -120,18 +96,137 @@ MMR014,MMR014D002,MMR014012,Shan (South),Loilen,Laihka,CC181259,လဲချာ�
             ////.append('input').attr('id','searching').attr('type','search').attr('placeholder','Search by : MP names, Constituency names, Township names ...').on('click',document.getElementById("searching") = function () {searchInput()})
             
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@       
             @@@@@@@@@@@             Pages!              @@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
             
-            /*-----------------------home---------------------------*/
+            /*-----------------------home---------------------------*/    ///       Landing page,
             function homePage () {
                 d3.select('#land').text('');
                 var land = d3.select('#land').style('margin-left','50px');
                 land.append('h3').text('General election : ').selectAll('button').data(['2010','2015']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click',function (d) {pageloc = 2; yearSelect = d; return yearPage();});
                 land.append('h3').text('By-election : ').selectAll('button').data(['2012','2017','2018']).enter().append('button').classed('button', true).text(function (d) {return d;}).on('click',function (d) {yearSelect = d; return constPage();}); 
+                
+                
+                
+                
+                d3.select('#land').append('center').append('p').text('MP position in 2015');
+                
+                
+                var width = 450
+    height = 450
+    margin = 40
+
+// The radius of the pieplot is half the width or half the height (smallest one). I substract a bit of margin.
+var radius = Math.min(width, height) / 2 - margin
+
+// append the svg object to the div called 'my_dataviz'
+var svg = d3.select("#land").append('center')
+  .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+// Create dummy data
+var data = {NLD: 65, USDP: 9, Others:1, Military:25}
+
+// set the color scale
+var color = d3.scaleOrdinal()
+  .domain(["NLD", "USDP","Ethnic","Military"])
+  .range(d3.schemeDark2);
+
+// Compute the position of each group on the pie:
+var pie = d3.pie()
+  .sort(null) // Do not sort group by size
+  .value(function(d) {return d.value; })
+var data_ready = pie(d3.entries(data))
+
+// The arc generator
+var arc = d3.arc()
+  .innerRadius(radius * 0.5)         // This is the size of the donut hole
+  .outerRadius(radius * 0.8)
+
+// Another arc that won't be drawn. Just for labels positionning
+var outerArc = d3.arc()
+  .innerRadius(radius * 0.9)
+  .outerRadius(radius * 0.9)
+
+// Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+svg
+  .selectAll('allSlices')
+  .data(data_ready)
+  .enter()
+  .append('path')
+  .attr('d', arc)
+  .attr('fill', function(d){ return(color(d.data.key)) })
+  .attr("stroke", "white")
+  .style("stroke-width", "2px")
+  .style("opacity", 0.7)
+
+// Add the polylines between chart and labels:
+svg
+  .selectAll('allPolylines')
+  .data(data_ready)
+  .enter()
+  .append('polyline')
+    .attr("stroke", "black")
+    .style("fill", "none")
+    .attr("stroke-width", 1)
+    .attr('points', function(d) {
+      var posA = arc.centroid(d) // line insertion in the slice
+      var posB = outerArc.centroid(d) // line break: we use the other arc generator that has been built only for that
+      var posC = outerArc.centroid(d); // Label position = almost the same as posB
+      var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2 // we need the angle to see if the X position will be at the extreme right or extreme left
+      posC[0] = radius * 0.95 * (midangle < Math.PI ? 1 : -1); // multiply by 1 or -1 to put it on the right or on the left
+      return [posA, posB, posC]
+    })
+
+// Add the polylines between chart and labels:
+svg
+  .selectAll('allLabels')
+  .data(data_ready)
+  .enter()
+  .append('text')
+    .text( function(d) { console.log(d.data.key) ; return d.data.key } )
+    .attr('transform', function(d) {
+        var pos = outerArc.centroid(d);
+        var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
+        pos[0] = radius * 0.99 * (midangle < Math.PI ? 1 : -1);
+        return 'translate(' + pos + ')';
+    })
+    .style('text-anchor', function(d) {
+        var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
+        return (midangle < Math.PI ? 'start' : 'end')
+    })
+                
+                
+                d3.select('#land').append('center').append('p').text('Elections in Myanmar are held for the Pyidtaungsu Hluttaw (the Assembly of the Union, Myanmar’s national legislature) and for regional and state Hluttaw (assemblies)1 The national legislature is made up of two bodies, the Amyotha Hluttaw (the 224-seat House of Nationalities) and the Pyithu Hluttaw (the 440-seat House of Representatives). Three quarters of the national seats in each House are selected through elections, most recently held in 2015. One quarter of the seats in each House are made up of army representatives selected by the Commander-in-Chief.');
+                
+                
+                
             }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             /*-----------------------Year---------------------------*/
@@ -139,11 +234,32 @@ MMR014,MMR014D002,MMR014012,Shan (South),Loilen,Laihka,CC181259,လဲချာ�
                 d3.select('#land').text("");
                 d3.select('#land').append("center").append("h2").text("Year : " + yearSelect);
                 
+                var yrtable = d3.select('#land').append('table').style('border','none');
+                yrtable.append('tr').selectAll('td').data(['Held on','8 November 2015']).enter().append('td').text(function(d){return d});
+                yrtable.append('tr').selectAll('td').data(['Available seats','1557']).enter().append('td').text(function(d){return d});
+                yrtable.append('tr').selectAll('td').data(['President','Htin Kyaw']).enter().append('td').text(function(d){return d});
+                yrtable.append('tr').selectAll('td').data(['State Counselor','Aung San Suu Kyi']).enter().append('td').text(function(d){return d});
                 
                 
-                
-                d3.select('#land').append('h3').text('House by :').selectAll('button').data(['Amyotha Hluttaw','Pyithu Hluttaw','State and Region Hluttaw']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click', function(d) {houseSelect = d; return housePage();});
+                d3.select('#land').append('h2').text('House by :').selectAll('button').data(['Amyotha Hluttaw','Pyithu Hluttaw','State and Region Hluttaw']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click', function(d) {houseSelect = d;});
             }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             /*----------------------House---------------------------*/
             function housePage () {
@@ -152,14 +268,41 @@ MMR014,MMR014D002,MMR014012,Shan (South),Loilen,Laihka,CC181259,လဲချာ�
                 d3.select('#land').append("center").append("h2").text("House : " + houseSelect);
             }
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             /*-------------------Constituency-----------------------*/
             function constPage () {
-                constInfo = d3.select();
+                //constInfo = d3.select();
+                d3.select('#land').text('');
+                d3.select('#land').append('center').append('h2').text('Year : ' + yearSelect);
+                d3.select('#land').append('center').append('h2').text('House : ' + houseSelect)
+                
+               
+                var mpTable = d3.select('#land').append('table').style('border','1px solid black');
+               
+                
+                */
             }
             
             /*-----------------------MP-----------------------------*/
             function mpPage () {
-                d3.select('#land').text("Input Word is" + wordInput);                
+                d3.select('#land').text(""); 
+                
             }
             
             
