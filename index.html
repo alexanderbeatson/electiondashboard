@@ -6,7 +6,7 @@
     </HEAD>
     <BODY onload = "homePage()">
        <style>
-           table, th, td{ 
+           table, th, td{
     width: 90%;
                margin: 2%;
                border: 1px solid black;
@@ -23,9 +23,9 @@
   margin: 5%;
   border-radius: 10px;
   transition-duration: 0.4s;
-} 
+}
            .button:hover {
-               
+
                 background-color: #4CAF50; /* Green */
                 color: white;
                 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -38,48 +38,48 @@
                min-width: 300px;
                max-width: 800px;
                margin: auto;
-           }       
+           }
         </style>
         <div id = "overview"></div>
         <div id = "homeButton"></div>
         <div id = "searchBar"></div>
         <div id = "land"></div>
-        <script type = "text/javascript"> 
-            
-            
+        <script type = "text/javascript">
+
+
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     Set all the variables before they are used.
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@            Variables!           @@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
-            
+
             var pageloc = 1;
             var yearSelect = null;
             var wordInput = null;
             var houseSelect = null;
             var MPselect = null;
             var tmpDataset = [],i,j;
-            
+
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@      Introduction!
             @@@@@@@@@@@         First Paragraph!        @@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
             d3.select('#overview').append('h4').style('margin','5%').text('Tech4Change team from Phandeeyar develops the dashboard about Election Data to use and access it easily and effectively. The dashboard allows you to search information of all the elections. Most of the election data are extracted from Union Election Commission (UEC). The data of General Elections (2010, 2015) and By-Elections (2012, 2017, 2018) can be downloaded. Datasets are digitized, cleaned and manipulated by Tech4Change Team.');
-            
-            
+
+
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@      Call homePage
             @@@@@@@@@@@         Home button!            @@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
-            
+
             d3.select('#homeButton').append('button').style('width','107px').style('background-position','top').style('padding','0px 30px 0px 30px').style('position','fixed').style('right','2%').style('top','90%').style('float','right').attr('id','footerhome').text('Home').on('click',function () {return homePage();});
-            
-            
-            
-           
-            
+
+
+
+
+
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@      Call mpPage function and assign the input to wordInput variable
             @@@@@@@@@@@         The Search Bar!         @@@@@@@@@@@@@@
@@ -94,26 +94,26 @@
                 return mpPage();
             }
             ////.append('input').attr('id','searching').attr('type','search').attr('placeholder','Search by : MP names, Constituency names, Township names ...').on('click',document.getElementById("searching") = function () {searchInput()})
-            
+
             /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            @@@@@@@@@@@                                 @@@@@@@@@@@@@@       
+            @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@             Pages!              @@@@@@@@@@@@@@
             @@@@@@@@@@@                                 @@@@@@@@@@@@@@
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
-            
+
             /*-----------------------home---------------------------*/    ///       Landing page,
             function homePage () {
                 d3.select('#land').text('');
                 var land = d3.select('#land').style('margin-left','50px');
                 land.append('h3').text('General election : ').selectAll('button').data(['2010','2015']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click',function (d) {pageloc = 2; yearSelect = d; return yearPage();});
-                land.append('h3').text('By-election : ').selectAll('button').data(['2012','2017','2018']).enter().append('button').classed('button', true).text(function (d) {return d;}).on('click',function (d) {yearSelect = d; return constPage();}); 
-                
-                
-                
-                
+                land.append('h3').text('By-election : ').selectAll('button').data(['2012','2017','2018']).enter().append('button').classed('button', true).text(function (d) {return d;}).on('click',function (d) {yearSelect = d; return constPage();});
+
+
+
+
                 d3.select('#land').append('center').append('p').text('MP position in 2015');
-                
-                
+
+
                 var width = 450
     height = 450
     margin = 40
@@ -200,112 +200,112 @@ svg
         var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
         return (midangle < Math.PI ? 'start' : 'end')
     })
-                
-                
+
+
                 d3.select('#land').append('center').append('p').text('Elections in Myanmar are held for the Pyidtaungsu Hluttaw (the Assembly of the Union, Myanmar’s national legislature) and for regional and state Hluttaw (assemblies)1 The national legislature is made up of two bodies, the Amyotha Hluttaw (the 224-seat House of Nationalities) and the Pyithu Hluttaw (the 440-seat House of Representatives). Three quarters of the national seats in each House are selected through elections, most recently held in 2015. One quarter of the seats in each House are made up of army representatives selected by the Commander-in-Chief.');
-                
-                
-                
+
+
+
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             /*-----------------------Year---------------------------*/
             function yearPage () {
                 d3.select('#land').text("");
                 d3.select('#land').append("center").append("h2").text("Year : " + yearSelect);
-                
+
                 var yrtable = d3.select('#land').append('table').style('border','none');
                 yrtable.append('tr').selectAll('td').data(['Held on','8 November 2015']).enter().append('td').text(function(d){return d});
                 yrtable.append('tr').selectAll('td').data(['Available seats','1557']).enter().append('td').text(function(d){return d});
                 yrtable.append('tr').selectAll('td').data(['President','Htin Kyaw']).enter().append('td').text(function(d){return d});
                 yrtable.append('tr').selectAll('td').data(['State Counselor','Aung San Suu Kyi']).enter().append('td').text(function(d){return d});
-                
-                
+
+
                 d3.select('#land').append('h2').text('House by :').selectAll('button').data(['Amyotha Hluttaw','Pyithu Hluttaw','State and Region Hluttaw']).enter().append('button').classed('button',true).text(function (d) {return d;}).on('click', function(d) {houseSelect = d;});
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             /*----------------------House---------------------------*/
             function housePage () {
                 d3.select('#land').text("");
                 d3.select('#land').append("center").append("h2").text("Year : " + yearSelect);
                 d3.select('#land').append("center").append("h2").text("House : " + houseSelect);
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             /*-------------------Constituency-----------------------*/
             function constPage () {
                 //constInfo = d3.select();
                 d3.select('#land').text('');
                 d3.select('#land').append('center').append('h2').text('Year : ' + yearSelect);
                 d3.select('#land').append('center').append('h2').text('House : ' + houseSelect)
-                
-               
+
+
                 var mpTable = d3.select('#land').append('table').style('border','1px solid black');
-               
+
+
                 
-                */
             }
-            
+
             /*-----------------------MP-----------------------------*/
             function mpPage () {
-                d3.select('#land').text(""); 
-                
+                d3.select('#land').text("");
+
             }
-            
-            
+
+
         </script>
     </BODY>
 </HTML>
