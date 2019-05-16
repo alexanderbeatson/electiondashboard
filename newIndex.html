@@ -6,15 +6,20 @@
     <script class="internal" src="variables.js"></script>
     <script class="internal" src="elect.js"></script>
     <script class="internal" src="intro.js"></script>
-      <script type="text/javascript" class="internal" src="byConst.js"></script>
+    <script class="internal" src="d3-parliament.js"></script>
+    <script class="internal" src="parliament.js"></script>
+
+
     <!-- Add all the imported scripts here -->
   </head>
-
-  <body >
+  <body>
     <div class="intro">
     </div>
 
     <div class="byYear">
+      <div class="buttons"></div>
+      <div class="candidates"></div>
+      <div class="parliament"></div>
     </div>
 
     <div class="byConst">
@@ -24,10 +29,6 @@
     <script>
       var lang = 'EN';
       renderText();
-        buildDropdowns();
-      console.log(elect);
-
-
     </script>
   </body>
 </html>
