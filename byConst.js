@@ -15,7 +15,7 @@ function buildDropdowns {
 
   dropdownDiv.append('select')
     .attr('class', 'house')
-    .attr('name', 'house')
+    .attr('name', 'house')tgtt
     .selectAll('option')
     .data(houses)
     .enter()
