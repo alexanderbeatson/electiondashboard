@@ -15,7 +15,7 @@ var text = {
 var yearSelect = '2010';
 
 
-var year4const = null;
+var year4const = "yr2010";
 var house4const = null;
 var constSelect = null;
 var yrData = null; 
@@ -28,3 +28,25 @@ var yearInfo = {'2015': [{'Held on':'8 Nov 2015','Available seats':'1557','Presi
                 '2018':[{'Held on':'3 Nov 2018','Available seats':'13','President':'Win Myint'}]};
 
 var candidateData = {"2010":[{"candidates":1084,"partyAbb":"USDP"},{"candidates":975,"partyAbb":"NUP"},{"candidates":158,"partyAbb":"NDF"},{"candidates":153,"partyAbb":"SNDP"},{"candidates":78,"partyAbb":"Inde"},{"candidates":48,"partyAbb":"DPM"},{"candidates":38,"partyAbb":"CPP"},{"candidates":33,"partyAbb":"AMRDP"},{"candidates":29,"partyAbb":"KPP"},{"candidates":27,"partyAbb":"88GSY"}],"2012":[{"candidates":45,"partyAbb":"USDP"},{"candidates":44,"partyAbb":"NLD"},{"candidates":22,"partyAbb":"NUP"},{"candidates":11,"partyAbb":"NDF"},{"candidates":7,"partyAbb":"Inde"},{"candidates":4,"partyAbb":"UPP"},{"candidates":3,"partyAbb":"DPMNS"},{"candidates":3,"partyAbb":"MNC"},{"candidates":3,"partyAbb":"NNDP"},{"candidates":3,"partyAbb":"UDP"}],"2015":[{"candidates":1092,"partyAbb":"USDP"},{"candidates":1091,"partyAbb":"NLD"},{"candidates":743,"partyAbb":"NUP"},{"candidates":349,"partyAbb":"NDP"},{"candidates":282,"partyAbb":"Inde"},{"candidates":282,"partyAbb":"MFDP"},{"candidates":262,"partyAbb":"NDF"},{"candidates":190,"partyAbb":"SNDP"},{"candidates":147,"partyAbb":"SNLD"},{"candidates":112,"partyAbb":"KPP"}],"2017":[{"candidates":19,"partyAbb":"NLD"},{"candidates":18,"partyAbb":"USDP"},{"candidates":7,"partyAbb":"Inde"},{"candidates":7,"partyAbb":"SNDP"},{"candidates":7,"partyAbb":"SNLD"},{"candidates":6,"partyAbb":"NDP"},{"candidates":5,"partyAbb":"NDF"},{"candidates":4,"partyAbb":"DP"},{"candidates":3,"partyAbb":"NUP"},{"candidates":2,"partyAbb":"LNDP"}],"2018":[{"candidates":12,"partyAbb":"NLD"},{"candidates":9,"partyAbb":"USDP"},{"candidates":6,"partyAbb":"Inde"},{"candidates":4,"partyAbb":"PLP"},{"candidates":3,"partyAbb":"ALD"},{"candidates":3,"partyAbb":"MPDP"},{"candidates":3,"partyAbb":"NUDP"},{"candidates":3,"partyAbb":"UEPFDP"},{"candidates":2,"partyAbb":"CLD"},{"candidates":2,"partyAbb":"DPM"}]};
+
+
+
+var parliData = {'2010':[{'id':'NLD','seats':0},{'id':'USDP','seats':58},{'id':'Others','seats':17},{'id':'Military','seats':25}],
+                '2012':[{'id':'NLD','seats':3},{'id':'USDP','seats':55},{'id':'Others','seats':17},{'id':'Military','seats':25}],
+                 '2015':[{'id':'NLD','seats':59},{'id':'USDP','seats':6},{'id':'Others','seats':10},{'id':'Military','seats':25}],
+                 '2017':[{'id':'NLD','seats':58},{'id':'USDP','seats':6},{'id':'Others','seats':11},{'id':'Military','seats':25}],
+                 '2018':[{'id':'NLD','seats':58},{'id':'USDP','seats':6},{'id':'Others','seats':11},{'id':'Military','seats':25}],
+                }
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         

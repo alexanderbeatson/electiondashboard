@@ -54,4 +54,14 @@ function visualize() {
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
+    var parliament = d3.parliament();
+        parliament.width(350).height(400).innerRadiusCoef(0.4);
+        parliament.enter.fromCenter(false).smallToBig(false);
+        parliament.exit.toCenter(true).bigToSmall(true);
+
+
+    parli.datum(parliData[yearSelect]).call(parliament);
+    
+    
 };

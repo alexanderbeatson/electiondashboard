@@ -1,0 +1,8 @@
+.bar {
+    fill: skyblue;
+}
+
+svg .seat.NLD { fill: red }
+svg .seat.USDP { fill: green }
+svg .seat.others { fill: blue }
+svg .seat.Military { fill: yellow }

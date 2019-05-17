@@ -7,7 +7,7 @@ function buildDropdowns(){
     .attr('class', 'year')
     .attr('id','constYear')
     .attr('name', 'year')
-    .attr('onchange','constSelected')
+    .attr('onchange','yearChange()')
     .selectAll('option')
     .data(years)
     .enter()
@@ -23,8 +23,9 @@ function buildDropdowns(){
     
   dropdownDiv.append('select')
     .attr('class', 'house')
+    .attr('id','constHouse')
     .attr('name', 'house')
-    .attr('onchange','constSelected')
+    .attr('onchange','houseChange()')
     .selectAll('option')
     .data(houses)
     .enter()
@@ -35,17 +36,28 @@ function buildDropdowns(){
     
 }
 
-function constSelected () {
+function constSelected() {
+    /*
     year4const = document.getElementById("constYear").value;
     house4const = document.getElementById("constHouse").value;
-    constSelect = document.getElementById("constSelect").value;
-    d3.select('#constTable').text("");
+    constSelect = document.getElementById("constSelect").value;*/
+    d3.select('#constTable').text(year4const);
     d3.select('#constTable')
         .append('center')
         .append('h3')
         .append('table')
-        .selectAll('tr')
+        .selectAll('tr');
 }
+
+function houseChange() {
+    house4const = document.getElementById("constHouse").value;
+    return constSelected();
+};
+function yearChange() {
+    year4const = document.getElementById("constYear").value;
+    return constSelected();
+};
+
 
 
 
