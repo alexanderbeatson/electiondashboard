@@ -10,3 +10,19 @@ var text = {
     စာမျက်နှာဖြစ်ပါသည်။`
   },
 };
+
+
+var yearSelect = '2010';
+
+
+var year4const = null;
+var house4const = null;
+var constSelect = null;
+
+
+var yearInfo = {'2015': [{'Held on':'8 Nov 2015','Available seats':'1557','President':'Htin Kyaw'}],
+                '2010':[{'Held on':'7 Nov 2010','Available seats':'1544','President':'Thein Sein'}],
+                '2012':[{'Held on':'1 April 2012','Available seats':'48','President':'Thein Sein'}],
+                '2017':[{'Held on':'1 Apr 2017','Available seats':'19','President':'Htin Kyaw'}],
+                '2018':[{'Held on':'3 Nov 2018','Available seats':'13','President':'Win Myint'}]};
+

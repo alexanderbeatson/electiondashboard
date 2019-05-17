@@ -2,12 +2,14 @@
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
     <link rel="stylesheet" href="styles.css">
-    <script src="https://d3js.org/d3.v5.js"></script>
-    <script class="internal" src="variables.js"></script>
-    <script class="internal" src="elect.js"></script>
-    <script class="internal" src="intro.js"></script>
-    <script class="internal" src="d3-parliament.js"></script>
-    <script class="internal" src="parliament.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v5.js"></script>
+    <script type="text/javascript" class="internal" src="variables.js"></script>
+    <script type="text/javascript" class="internal" src="elect.js"></script>
+    <script type="text/javascript" class="internal" src="intro.js"></script>
+    <script type="text/javascript" class="internal" src="d3-parliament.js"></script>
+    <script type="text/javascript" class="internal" src="parliament.js"></script>
+    <script type="text/javascript" class="internal" src="byYear.js"></script>
+      <script type="text/javascript" class="internal" src="byConst.js"></script>
 
 
     <!-- Add all the imported scripts here -->
@@ -17,18 +19,22 @@
     </div>
 
     <div class="byYear">
-      <div class="buttons"></div>
-      <div class="candidates"></div>
+      <div id="yearButtons"></div>
+      <div id="yearInfo"></div>
+      <div id="candidates"></div>
       <div class="parliament"></div>
     </div>
 
     <div class="byConst">
-      <div class="dropdown"></div>
+      <div id="dropdown"></div>
+      <div id="constTable"></div>
     </div>
 
     <script>
       var lang = 'EN';
       renderText();
+        yearPage();
+        buildDropdowns();
     </script>
   </body>
 </html>
