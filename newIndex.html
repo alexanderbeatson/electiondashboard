@@ -10,6 +10,7 @@
     <script type="text/javascript" class="internal" src="parliament.js"></script>
     <script type="text/javascript" class="internal" src="byYear.js"></script>
       <script type="text/javascript" class="internal" src="byConst.js"></script>
+      <script type="text/javascript" class="internal" src="visualization.js"></script>
 
 
     <!-- Add all the imported scripts here -->
@@ -21,6 +22,7 @@
     <div class="byYear">
       <div id="yearButtons"></div>
       <div id="yearInfo"></div>
+      <div id="Viz"></div>
       <div id="candidates"></div>
       <div class="parliament"></div>
     </div>
@@ -35,6 +37,7 @@
       renderText();
         yearPage();
         buildDropdowns();
+        visualize();
     </script>
   </body>
 </html>

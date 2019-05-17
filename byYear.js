@@ -12,7 +12,7 @@ land.append('tr').text('General election : ')
                 })
     .on('click',function (d) {
                     yearSelect = d;
-                    return yearInformation();
+                    return yearInformation(), visualize();
                 });
 
 
@@ -26,7 +26,7 @@ land.append('tr').text('By election : ')
                 })
     .on('click',function(d){
                     yearSelect = d;
-                    return yearInformation();
+                    return yearInformation(), visualize();
                 });
     return yearInformation();
 }

@@ -35,7 +35,6 @@ function buildDropdowns(){
     
 }
 
-
 function constSelected () {
     year4const = document.getElementById("constYear").value;
     house4const = document.getElementById("constHouse").value;
@@ -46,7 +45,6 @@ function constSelected () {
         .append('h3')
         .append('table')
         .selectAll('tr')
-        .data(elect[][][])
 }
 
 
