@@ -1,7 +1,8 @@
 function visualize() {
     d3.select("#Viz").text("");
     yrData = candidateData [yearSelect];
-    var yearViz = d3.select("#Viz").append('center').append('table').append('tr');
+    var vizblock = d3.select("#Viz").append('center').append('table');
+    var yearViz = vizblock.append('tr');
     //Bar chart
     
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -63,5 +64,9 @@ function visualize() {
 
     parli.datum(parliData[yearSelect]).call(parliament);
     
+    
+    var labelTab = vizblock.append('tr');
+    var barLabel = labelTab.append('th').text('Top 10 parties by number of candidates');
+    var parliLabel = labelTab.append('th').text('Positions in parliament');
     
 };
