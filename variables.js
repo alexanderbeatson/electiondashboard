@@ -36,17 +36,79 @@ var parliData = {'2010':[{'id':'NLD','seats':0},{'id':'USDP','seats':58},{'id':'
                  '2015':[{'id':'NLD','seats':59},{'id':'USDP','seats':6},{'id':'Others','seats':10},{'id':'Military','seats':25}],
                  '2017':[{'id':'NLD','seats':58},{'id':'USDP','seats':6},{'id':'Others','seats':11},{'id':'Military','seats':25}],
                  '2018':[{'id':'NLD','seats':58},{'id':'USDP','seats':6},{'id':'Others','seats':11},{'id':'Military','seats':25}],
-                }
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
+                }    
+
+//----------------------------------------------------------------------
+//Table and drop down variables
+
+var ddYearSelect = 'yr2010';
+var ddHouseSelect = Object.keys(elect[ddYearSelect])[0];
+var ddStateSelect = [...new Set(elect[ddYearSelect][ddHouseSelect].map(x => x.name_st))][0];
+
+var ddStatesLoc = [];
+
+//----------------------------------------------------------------------
+var statesLoc = [];
+var j = 0;
+for(var i = 0; i < elect[ddYearSelect][ddHouseSelect].length; i++){
+    if(elect[ddYearSelect][ddHouseSelect].map(x => x.name_st)[i] == ddStateSelect) {
+        statesLoc[j] = i;
+        j++;
+    }
+}
+
+var NewStateData = [];
+for (var i = 0; i < statesLoc.length; i++) {
+    NewStateData [i] = elect[ddYearSelect][ddHouseSelect][statesLoc[i]];
+}
+//----------------------------------------------------------------------
+var ddConstSelect = [...new Set(NewStateData.map(x => x.const_name))][0];
+var constLoc = [];
+j = 0;
+for(var i = 0;i < NewStateData.length; i++) {
+    if(NewStateData.map(x => x.const_name)[i] == ddConstSelect) {
+        constLoc[j] = i;
+        j++;
+    }
+}
+var constTable = [];
+for (var i = 0; i <constLoc.length; i++) {
+    constTable [i] = NewStateData[constLoc[i]];
+}
+
+
+//----------------------------------------------------------------------
+//Drop down variables
+var years = Object.keys(elect);
+var houses = Object.keys(elect[ddYearSelect]);
+var states = [...new Set(elect[ddYearSelect][ddHouseSelect].map(x => x.name_st))];
+var consts = [...new Set(NewStateData.map(x => x.const_name))];
+//----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     
