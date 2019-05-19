@@ -1,6 +1,6 @@
 def main():
-    mainFile = open("mbei.html", 'r', encoding='utf-8')
-    writeFile = open("mbei_pasted.html", 'w+', encoding='utf-8')
+    mainFile = open("index.html", 'r', encoding='utf-8')
+    writeFile = open("index_pasted.html", 'w+', encoding='utf-8')
     classId = 'class="internal"'
     cssId = '<link rel='
 

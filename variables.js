@@ -101,7 +101,11 @@ var colNameTranslate = {
     'votes.total_valid' : 'Total votes'
 }
 
-
+var tabLabelTranslate = {
+'amyotha' :'အမျိုးသားလွှတ်တော်',
+'pyithu': 'ပြည်သူ့လွှတ်တော်',
+'sr' : 'တိုင်းဒေသကြီးလွှတ်တော်'
+};
 
 
 

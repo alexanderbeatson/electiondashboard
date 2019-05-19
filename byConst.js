@@ -51,29 +51,11 @@ function buildDropdowns(){
     .attr('value', function(d) { return d;})
     .text(function(d) { return d;});  
     
+    d3.select("#tabLabel").text('');
+    d3.select("#tabLabel").append('center').append('h3').text(tabLabelTranslate[ddHouseSelect]);
     
     tabulate(constTable ,["name_st","const_code","const_name","candidate_name.my","party_name.en","votes.total_valid"]);
 }
-/*
-function constSelected() {
-    d3.select('#constTable').text(year4const);
-    d3.select('#constTable')
-        .append('center')
-        .append('h3')
-        .append('table')
-        .selectAll('tr');
-}
-
-function houseChange() {
-    house4const = document.getElementById("constHouse").value;
-    return constSelected();
-};
-function yearChange() {
-    year4const = document.getElementById("constYear").value;
-    return constSelected();
-};
-
-*/
 //---------------------------------------------------------------
 function yearChange() {
     d3.select('#constHouse').remove();
@@ -119,7 +101,8 @@ function houseUpdate() {
         .append('option')
         .attr('value', function(d) { return d;})
         .text(function(d) { return d;}); 
-    
+    d3.select("#tabLabel").text('');
+    d3.select("#tabLabel").append('center').append('h3').text(tabLabelTranslate[ddHouseSelect]);
     stateUpdate();
 }
 //---------------------------------------------------------------
