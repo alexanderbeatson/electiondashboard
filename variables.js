@@ -45,7 +45,7 @@ var ddYearSelect = 'yr2010';
 var ddHouseSelect = Object.keys(elect[ddYearSelect])[0];
 var ddStateSelect = [...new Set(elect[ddYearSelect][ddHouseSelect].map(x => x.name_st))][0];
 
-var ddStatesLoc = [];
+//var ddStatesLoc = [];
 
 //----------------------------------------------------------------------
 var statesLoc = [];
@@ -85,8 +85,21 @@ var states = [...new Set(elect[ddYearSelect][ddHouseSelect].map(x => x.name_st))
 var consts = [...new Set(NewStateData.map(x => x.const_name))];
 //----------------------------------------------------------------------
 
+  var houseNameTranslate = {
+      'amyotha' : 'Amyotha',
+      'pyithu' : 'Pyithu',
+      'sr' : 'State/Region'
+  };
 
 
+var colNameTranslate = {
+    'name_st' : 'State name',
+    'const_code' : 'Constituency code',
+    'const_name' : 'Constituency name',
+    'candidate_name.my' : 'Candidate name',
+    'party_name.en' : 'Party Name',
+    'votes.total_valid' : 'Total votes'
+}
 
 
 
