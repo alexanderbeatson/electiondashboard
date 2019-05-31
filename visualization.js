@@ -44,6 +44,30 @@ function visualize() {
   // add the y Axis
     svg.append("g")
         .call(d3.axisLeft(y));
+    
+    // add x label
+    svg.append("text")
+        .style("font-size","12")
+        .attr("class","x label")
+        .attr("text-anchor","end")
+        .attr("x", width/2)
+        .attr("y", height+ 30)
+        .text("Parties")
+    
+    
+    svg.append("text")
+        .attr("transform","rotate(-90)")    
+        .style("font-size","12")
+        .attr("class","y label")
+        .attr("text-anchor","end")
+        .attr("x", -50)
+        .attr("y", -30)
+        .text("Candidates")
+    
+      /*
+      .attr("y", 0 - margin.left)
+      .attr("x",0 - (height / 2))
+      .attr("dy", "1em")*/
 
     
     

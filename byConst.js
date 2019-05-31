@@ -176,6 +176,7 @@ function tabulate(data, columns) {
 		  .data(columns).enter()
 		  .append('th')
             .style('border','1px solid black')
+            .append('b')
 		    .text(function (column) { return colNameTranslate[column]; });
 
 		// create a row for each object in the data

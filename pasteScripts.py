@@ -23,7 +23,7 @@ def pasteCSS(line, writeFile):
     writeFile.write("</style>\n")
     
 def pasteScript(line, writeFile):
-    filename = line.strip().split(" ")[2].split('"')[1]
+    filename = line.strip().split(" ")[3].split('"')[1]
     importFile = open(filename, 'r', encoding='utf-8')
     writeFile.write("<script>\n")
     for row in importFile:
