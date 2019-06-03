@@ -1,19 +1,7 @@
 function buildDropdowns(){
-  var dropdownDiv = d3.select('#dropdown').append('center').attr('id','ddlabels');
-  
-  dropdownDiv.append('select')
-    .attr('class', 'year')
-    .attr('id','constYear')
-    .attr('name', 'year')
-    .attr('onchange','yearChange()')
-    .selectAll('option')
-    .data(years)
-    .enter()
-    .append('option')
-    .attr('value', function(d) {return d;})
-    .text(function(d) { return d.slice(2);});
-  
+  var dropdownDiv = d3.select('#dropdown').attr('id','ddlabels');
 
+//yearS , year4const, yearSelect
     
   dropdownDiv.append('select')
     .attr('class', 'house')
@@ -52,7 +40,7 @@ function buildDropdowns(){
     .text(function(d) { return d;});  
     
     d3.select("#tabLabel").text('');
-    d3.select("#tabLabel").append('center').append('h3').text(tabLabelTranslate[ddHouseSelect]);
+    d3.select("#tabLabel").append('h3').text(tabLabelTranslate[ddHouseSelect]);
     
     tabulate(constTable ,["name_st","const_code","const_name","candidate_name.my","party_name.en","votes.total_valid"]);
 }
@@ -61,7 +49,7 @@ function yearChange() {
     d3.select('#constHouse').remove();
     d3.select('#constState').remove();
     d3.select('#const').remove();
-    ddYearSelect = document.getElementById('constYear').value;
+    ddYearSelect = yearS.concat(yearSelect);
     ddHouseSelect = Object.keys(elect[ddYearSelect])[0];
     ddStateSelect = [...new Set(elect[ddYearSelect][ddHouseSelect].map(x => x.name_st))][0];
     houses = Object.keys(elect[ddYearSelect]);
@@ -102,7 +90,7 @@ function houseUpdate() {
         .attr('value', function(d) { return d;})
         .text(function(d) { return d;}); 
     d3.select("#tabLabel").text('');
-    d3.select("#tabLabel").append('center').append('h3').text(tabLabelTranslate[ddHouseSelect]);
+    d3.select("#tabLabel").append('h3').text(tabLabelTranslate[ddHouseSelect]);
     stateUpdate();
 }
 //---------------------------------------------------------------
@@ -166,10 +154,10 @@ function constRender() {
 //---------------------------------------------------------------
 function tabulate(data, columns) {
        d3.select("#constTable").text('');
-		var table = d3.select('#constTable').append('center').append('table')
+		var table = d3.select('#constTable').append('table')
 		var thead = table.append('thead')
 		var	tbody = table.append('tbody');
-
+        
 		// append the header row
 		thead.append('tr')
 		  .selectAll('th')
@@ -200,8 +188,6 @@ function tabulate(data, columns) {
 	  return table;
 	}
 //---------------------------------------------------------------
-
-
 
 
 

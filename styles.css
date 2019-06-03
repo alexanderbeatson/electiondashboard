@@ -2,6 +2,11 @@
     fill: skyblue;
 }
 
+.viz {
+    display: inline-block;
+}
+
+
 svg .seat.NLD { fill: red }
 svg .seat.USDP { fill: green }
 svg .seat.others { fill: blue }

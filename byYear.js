@@ -1,8 +1,10 @@
+
 function yearPage () {
     d3.select('#yearButtons').text('');
-    var land = d3.select('#yearButtons').append('center').append('table');
+    var land = d3.select('#yearButtons').append('table').attr('class','tableYear');
 
 land.append('tr').style("background-color","white")
+    .style('width','100%')
     .text('General election : ')
     .selectAll('th')
     .data(['2010','2015']).enter()
@@ -14,7 +16,7 @@ land.append('tr').style("background-color","white")
                 })
     .on('click',function (d) {
                     yearSelect = d;
-                    return yearInformation(), visualize();
+                    return yearInformation(), visualize(), yearChange();
                 });
 
 
@@ -29,7 +31,7 @@ land.append('tr').text('By election : ')
                 })
     .on('click',function(d){
                     yearSelect = d;
-                    return yearInformation(), visualize();
+                    return yearInformation(), visualize(), yearChange();
                 });
     return yearInformation();
 }
@@ -40,7 +42,6 @@ land.append('tr').text('By election : ')
 function yearInformation () {
     d3.select('#yearInfo').text("");
     d3.select('#yearInfo')
-        .append("center")
         .append('h3')
         .append('table')
         .append('tr')
@@ -52,7 +53,6 @@ function yearInformation () {
         .text(function (d) {return d;});
     
     var yrTable = d3.select('#yearInfo')
-        .append('center')
         .append('table');
     var yrTableVar = yrTable.selectAll('td')
         .data(['Held on','Available seats','President']).enter()
@@ -61,17 +61,29 @@ function yearInformation () {
         .style('font-weight','bold')
         .text (function (d){return d;})
         .append('td')
-        .text(function(d) {
-            return yearInfo[yearSelect][0][d];
+        .attr('class', function(d) {
+            if (d == 'President') {
+                return 'presLink';
+            } else {
+                return 'noPresLink ' + d;
+            }
         });
-    /*yrTableVar.selectAll('th')
-        .data([0]).enter()
-        .append('th')
-        .text(function(){return yearInfo[yearSelect];});*/
+    
+    d3.select('.presLink')
+        .append('div')
+        .append('a')
+        .attr('href', yearInfo[yearSelect][0]['link'])
+        .text(yearInfo[yearSelect][0]['President'])
+    d3.select('.Held')
+        .append('div')
+        .append('a')
+        .attr('href', yearInfo[yearSelect][0]['sauce'])
+        .text(yearInfo[yearSelect][0]['Held on'])
+    d3.select('.Available')
+        .append('div')
+        .text(yearInfo[yearSelect][0]['Available seats'])
     
 }
-
-
 
 
 

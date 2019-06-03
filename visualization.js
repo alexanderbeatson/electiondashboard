@@ -1,10 +1,10 @@
 function visualize() {
-    d3.select("#Viz").text("");
     yrData = candidateData [yearSelect];
-    var vizblock = d3.select("#Viz").append('center').append('table');
-    var yearViz = vizblock.append('tr');
     //Bar chart
-    
+    d3.select('#Viz').style('width','100%').style('overflow','auto');
+    d3.select('#barC').text('');
+    var barChart = d3.select("#barC");
+    barChart.append('h3').text('Top 10 parties by number of candidates');
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 400 - margin.left - margin.right,
     height = 200 - margin.top - margin.bottom;
@@ -17,7 +17,7 @@ function visualize() {
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
-    var svg = yearViz.append('td').append("svg")
+    var svg = barChart.append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -63,7 +63,7 @@ function visualize() {
         .attr("x", -50)
         .attr("y", -30)
         .text("Candidates")
-    
+    //append('div').style('float','right').style('margin-right','10%')
       /*
       .attr("y", 0 - margin.left)
       .attr("x",0 - (height / 2))
@@ -73,8 +73,10 @@ function visualize() {
     
     
     //Parliamentry Chart
-    
-    var parli = yearViz.append('td').append("svg")
+    d3.select('#parC').text('');
+    var parChart = d3.select("#parC");
+    parChart.append('h3').text('Positions in parliament');
+    var parli = parChart.append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -87,10 +89,5 @@ function visualize() {
 
 
     parli.datum(parliData[yearSelect]).call(parliament);
-    
-    
-    var labelTab = vizblock.append('tr');
-    var barLabel = labelTab.append('th').text('Top 10 parties by number of candidates');
-    var parliLabel = labelTab.append('th').text('Positions in parliament');
     
 };

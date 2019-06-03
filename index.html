@@ -9,38 +9,42 @@
     <script type="text/javascript" class="internal" src="d3-parliament.js"></script>
     <script type="text/javascript" class="internal" src="parliament.js"></script>
     <script type="text/javascript" class="internal" src="byYear.js"></script>
-      <script type="text/javascript" class="internal" src="byConst.js"></script>
-      <script type="text/javascript" class="internal" src="visualization.js"></script>
+    <script type="text/javascript" class="internal" src="byConst.js"></script>
+    <script type="text/javascript" class="internal" src="visualization.js"></script>
 
-
-    <!-- Add all the imported scripts here -->
+    
   </head>
   <body>
     <div class="intro">
     </div>
-
+    <center>
     <div class="byYear">
       <div id="yearButtons"></div>
       <div id="yearInfo"></div>
-      <div id="Viz"></div>
-        <div id="downloadButton"></div>
+      <div id="Viz" style="display: inline-block;">
+          <div id="barC" class="viz"></div>
+          <div id="parC" class="viz"></div> 
+        </div>
+      <!--<div id="downloadButton"></div>-->
     </div>
-        </br>
-        </br>
+      </br>
+      <br/>
 
     <div class="byConst">
       <div id="dropdown"></div>
-        </br>
     <div id="tabLabel"></div>
       <div id="constTable"></div>
-    </div>
-
+    </div> 
+      </center>
     <script>
       var lang = 'EN';
       renderText();
-        yearPage();
-        buildDropdowns();
-        visualize();
+      yearPage();
+      buildDropdowns();
+      visualize();
+       
+
+
     </script>
   </body>
 </html>
