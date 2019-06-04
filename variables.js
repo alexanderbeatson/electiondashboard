@@ -19,6 +19,7 @@ var year4const = "yr2010";
 var house4const = null;
 var constSelect = null;
 var yrData = null; 
+var piChartData = {};
 
 
 var yearInfo = {'2015': [{'Held on':'8 Nov 2015','Available seats':'1557','President':'Htin Kyaw', 'link':'https://en.wikipedia.org/wiki/Htin_Kyaw','sauce':'https://en.wikipedia.org/wiki/2015_Myanmar_general_election'}],

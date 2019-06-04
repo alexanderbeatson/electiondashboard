@@ -43,6 +43,10 @@ function buildDropdowns(){
     d3.select("#tabLabel").append('h3').text(tabLabelTranslate[ddHouseSelect]);
     
     tabulate(constTable ,["name_st","const_code","const_name","candidate_name.my","party_name.en","votes.total_valid"]);
+    for (var i = 0; i < constTable.length; i++) {
+        piChartData [constTable[i]['party_name.en']] = constTable[i]['votes.total_valid'];
+    }
+    donutViz();
 }
 //---------------------------------------------------------------
 function yearChange() {
@@ -150,6 +154,11 @@ function constRender() {
     constTable [i] = NewStateData[constLoc[i]];
 }
     tabulate(constTable ,["name_st","const_code","const_name","candidate_name.my","party_name.en","votes.total_valid"]);
+    piChartData = {};
+    for (var i = 0; i < constTable.length; i++) {
+        piChartData [constTable[i]['party_name.en']] = constTable[i]['votes.total_valid'];
+    }
+    donutViz();
 }
 //---------------------------------------------------------------
 function tabulate(data, columns) {

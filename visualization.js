@@ -90,4 +90,26 @@ function visualize() {
 
     parli.datum(parliData[yearSelect]).call(parliament);
     
+    
+    
+    
+    //legends
+    d3.select('#parC').append('div').classed('viz',true).attr('id','leg');
+    var legd = d3.select('#leg').append('svg').attr('width',100).attr('height',100);
+    legd.append('circle').attr('cx',90).attr('cy',20).attr('r',5).attr('fill','red');
+    legd.append('circle').attr('cx',90).attr('cy',40).attr('r',5).attr('fill','green');
+    legd.append('circle').attr('cx',90).attr('cy',60).attr('r',5).attr('fill','blue');
+    legd.append('circle').attr('cx',90).attr('cy',80).attr('r',5).attr('fill','yellow');
+    legd.append('text').attr('x',25).attr('y',25).text('NLD');
+     legd.append('text').attr('x',25).attr('y',45).text('USDP');
+     legd.append('text').attr('x',25).attr('y',65).text('Others');
+     legd.append('text').attr('x',25).attr('y',85).text('Military');
 };
+
+
+
+
+
+
+
+
